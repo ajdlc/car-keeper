@@ -1,0 +1,414 @@
+{
+	"info": {
+		"_postman_id": "d0c1a61a-e862-450e-9705-709d3f1474ce",
+		"name": "Car Keeper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fcb2915e-5b6f-4394-9911-f03368263dd8",
+						"exec": [
+							"if (pm.response.code === 201) {",
+							"    pm.environment.set(\"authToken\", pm.response.json().token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"AJ De La Costa\",\n\t\"email\": \"ajdlc@protonmail.com\",\n\t\"password\": \"thisismypass123!@#\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE Car",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTM5ZDk1YmE1MGFhNTI2YTBkOTIzNDAiLCJpYXQiOjE1ODA4NDk0OTl9.MTreguRTp0KEHKogi5BzgezjyklVYOe0H7n_kzcvyp4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pontiac Vibe\",\n\t\"make\": \"Pontiac\",\n\t\"model\": \"Vibe\",\n\t\"year\": 2005,\n\t\"mileage\": 159000\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "345b9d2b-d856-4286-af8c-283e0ecd1615",
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    pm.environment.set(\"authToken\", pm.response.json().token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"ajdlc47@gmail.com\",\n\t\"password\": \"Computer098!\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ Cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ Car by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars/5e39f998d12c7b2214a66473",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e39f998d12c7b2214a66473"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET MPG Entries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e3a11361c0cc513448a66a2",
+						"mpg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET MPG Entry",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg/5e3a113d1c0cc513448a66a3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e3a11361c0cc513448a66a2",
+						"mpg",
+						"5e3a113d1c0cc513448a66a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE Car",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"year\": 2006\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars/5e39f998d12c7b2214a66473",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e39f998d12c7b2214a66473"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE MPG Entry",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"miles\": 320.8,\n\t\"gallons\": 10.117\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg/5e3a114b1c0cc513448a66a4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e3a11361c0cc513448a66a2",
+						"mpg",
+						"5e3a114b1c0cc513448a66a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE MPG Entry",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg/5e3a114b1c0cc513448a66a4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e3a11361c0cc513448a66a2",
+						"mpg",
+						"5e3a114b1c0cc513448a66a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars/5e39f998d12c7b2214a66473",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e39f998d12c7b2214a66473"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE MPG Entry",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"miles\": 289.5,\n\t\"gallons\": 13.57,\n\t\"location\": {\n\t\t\"latitude\": 117.234,\n\t\t\"longitude\": 8.1223\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e3a11361c0cc513448a66a2",
+						"mpg"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "359dd65d-eddf-420b-b90a-c9fd4d5d6884",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6fb80edd-429b-4dfd-a13f-e8778441aca6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

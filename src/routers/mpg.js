@@ -56,7 +56,7 @@ router.get("/cars/:id/mpg/:mpgId", auth, async (req, res) => {
 
         res.send(mpgEntry)
     } catch (e) {
-        res.send(500).send();
+        res.send(400).send();
     }
 
 });
@@ -72,7 +72,7 @@ router.get("/cars/:id/mpg", auth, async (req, res) => {
 
         res.send(car.mpg);
     } catch (e) {
-        res.status(500).send();
+        res.status(400).send();
     }
 });
 
@@ -123,6 +123,35 @@ router.patch("/cars/:id/mpg/:mpgId", auth, async (req, res) => {
     } catch (e) {
         res.status(400).send(e);
     }
+});
+
+// DELETE MPG Entry
+router.delete("/cars/:id/mpg/:mpgId", auth, async (req, res) => {
+    try {
+        const car = await Car.findOne({ _id: req.params.id, owner: req.user._id });
+
+        if (!car) {
+            return res.status(404).send();
+        }
+
+        // Check if the mpg entry exists
+        // Might not need to find the index of the entry but I am doing it that way
+        const entryIndex = car.mpg.findIndex(entry => entry.id === req.params.mpgId);
+
+        if (entryIndex === -1) {           
+            return res.status(404).send();
+        }
+
+        // Remove it
+        car.mpg = car.mpg.filter(entry => entry.id !== req.params.mpgId);
+
+        await car.save();
+        res.send(car);
+
+    } catch (e) {
+        res.status(400).send();
+    }
+
 })
 
 module.exports = router;
