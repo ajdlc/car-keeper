@@ -4,6 +4,8 @@ require("./db/mongoose");
 const userRouter = require("./routers/user");
 // Load the Car router
 const carRouter = require("./routers/car");
+// Load the MPG Router
+const mpgRouter = require("./routers/mpg");
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 app.use(userRouter);
 // Register the car router
 app.use(carRouter);
+// Register the MPG router
+app.use(mpgRouter);
 
 
 module.exports = app

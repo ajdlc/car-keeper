@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 // Tasks Schema
 const carSchema = new mongoose.Schema({
@@ -17,7 +18,7 @@ const carSchema = new mongoose.Schema({
         trim: true
     },
     year: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
         validate(value) {
@@ -27,7 +28,7 @@ const carSchema = new mongoose.Schema({
         }
     },
     mileage: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
         validate(value) {
@@ -37,10 +38,32 @@ const carSchema = new mongoose.Schema({
         }
     },
     mpg: [{
-        entry: {
+        date: {
+            type: Date,
+            default: Date.now
+        },
+        miles: {
             type: Number,
             required: true,
             trim: true
+        },
+        gallons: {
+            type: Number,
+            required: true,
+            trim: true
+        },
+        mpg: {
+            type: Number
+        },
+        location: {
+            latitude: {
+                type: Number,
+                trim: true
+            },
+            longitude: {
+                type: Number,
+                trim: true
+            }
         }
     }],
     owner: {
