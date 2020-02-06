@@ -52,6 +52,10 @@ const carSchema = new mongoose.Schema({
             required: true,
             trim: true
         },
+        price: {
+            type: Number,
+            trim: true
+        },
         mpg: {
             type: Number
         },

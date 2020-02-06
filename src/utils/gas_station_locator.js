@@ -1,7 +1,8 @@
 const request = require("request-promise-native");
 
 // About 1600 m is 1 mi, so rounding up gives 2,000
-const radius = 2000;
+// Actually switching it to 10
+const radius = 10;
 const type = "gas_station";
 
 const getLocation = async (latitude, longitude) => {
