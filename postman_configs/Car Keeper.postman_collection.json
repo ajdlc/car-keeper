@@ -94,6 +94,41 @@
 			"response": []
 		},
 		{
+			"name": "CREATE MPG Entry",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"miles\": 289.5,\n\t\"gallons\": 13.57,\n\t\"location\": {\n\t\t\"latitude\": 34.691898,\n\t\t\"longitude\": -118.15424560000001\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e3a11361c0cc513448a66a2",
+						"mpg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Login User",
 			"event": [
 				{
@@ -337,41 +372,6 @@
 					"path": [
 						"cars",
 						"5e39f998d12c7b2214a66473"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "CREATE MPG Entry",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"miles\": 289.5,\n\t\"gallons\": 13.57,\n\t\"location\": {\n\t\t\"latitude\": 117.234,\n\t\t\"longitude\": 8.1223\n\t}\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/cars/5e3a11361c0cc513448a66a2/mpg",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"cars",
-						"5e3a11361c0cc513448a66a2",
-						"mpg"
 					]
 				}
 			},

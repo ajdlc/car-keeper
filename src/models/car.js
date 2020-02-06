@@ -64,6 +64,20 @@ const carSchema = new mongoose.Schema({
                 type: Number,
                 trim: true
             }
+        },
+        gasStation: {
+            name: {
+                type: String,
+                trim: true
+            },
+            latitude: {
+                type: Number
+            },
+            longitude: {
+                type: Number
+            },
+            place_id: String,
+            vicinity: String
         }
     }],
     owner: {

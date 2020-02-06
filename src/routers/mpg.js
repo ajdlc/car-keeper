@@ -3,6 +3,8 @@ const router = new express.Router();
 const Car = require("../models/car");
 // Load in the auth
 const auth = require("../middleware/auth");
+// Load in the getLocation Google Maps API
+const gasStationLocator = require("../utils/gas_station_locator");
 
 // CREATE mpg entry
 router.post("/cars/:id/mpg", auth, async (req, res) => {
@@ -23,12 +25,22 @@ router.post("/cars/:id/mpg", auth, async (req, res) => {
         entry.mpg = entry.mpg.toFixed(2);
     }
 
+    // Get the gas station information
+    const gasStation = await gasStationLocator.getLocation(entry.location.latitude, entry.location.longitude);
+    entry.gasStation = gasStation;
+    console.log(entry);
+    
+      
+    
+
+    // Get the car
     const car = await Car.findOne({_id: req.params.id, owner: req.user._id});
 
     if (!car) {
         return res.status(404).send();
     }
 
+    // Push the entry onto the array
     car.mpg.push(entry);
 
     try {
