@@ -14,6 +14,8 @@ const getLocation = async (latitude, longitude) => {
     
     const results = JSON.parse(await request(googleString)).results[0];
 
+    // TODO: Need to check to see if the results yield nothing. Use the return from await request(googleString).status === "ZERO_RESULTS" to see if there are in fact 0 results
+
     // Get the first one
     const data = {
         latitude: results.geometry.location.lat,
