@@ -9,7 +9,7 @@ const gasStationLocator = require("../utils/gas_station_locator");
 // CREATE mpg entry
 router.post("/cars/:id/mpg", auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["miles", "gallons", "mpg", "location"];
+    const allowedUpdates = ["miles", "gallons", "mpg", "location", "price"];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
@@ -17,13 +17,13 @@ router.post("/cars/:id/mpg", auth, async (req, res) => {
     }
 
     // Get the mpg
-    const entry = {...req.body};
+    const entry = {...req.body};    
 
     // Determine if the mpg was provided
     if (!entry.mpg) {
         entry.mpg = (entry.miles / entry.gallons);
         entry.mpg = entry.mpg.toFixed(2);
-    }
+    }    
 
     // Get the gas station information
     const gasStation = await gasStationLocator.getLocation(entry.location.latitude, entry.location.longitude);

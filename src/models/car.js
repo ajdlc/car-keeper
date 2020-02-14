@@ -27,6 +27,11 @@ const carSchema = new mongoose.Schema({
             }
         }
     },
+    vin: {
+        type: String,
+        required: true,
+        trim: true
+    },
     mileage: {
         type: String,
         required: true,
