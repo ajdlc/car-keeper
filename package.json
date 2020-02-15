@@ -4,6 +4,7 @@
   "description": "A web application that helps you keep track of your cars information, mpg, and maintenance.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "env-cmd -f ./config/test.env nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
