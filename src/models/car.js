@@ -47,6 +47,10 @@ const carSchema = new mongoose.Schema({
             type: Date,
             default: Date.now
         },
+        type: {
+            type: String,
+            required: true
+        },
         miles: {
             type: Number,
             required: true,

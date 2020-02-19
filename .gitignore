@@ -1,3 +1,4 @@
 config
 node_modules
 google_api_example
+logs.txt
