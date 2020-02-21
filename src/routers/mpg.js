@@ -9,7 +9,7 @@ const gasStationLocator = require("../utils/gas_station_locator");
 // CREATE mpg entry
 router.post("/cars/:id/mpg", auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["miles", "gallons", "mpg", "location", "price"];
+    const allowedUpdates = ["miles", "gallons", "mpg", "location", "price", "gasType"];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
@@ -87,7 +87,7 @@ router.get("/cars/:id/mpg", auth, async (req, res) => {
 // UPDATE MPG entry
 router.patch("/cars/:id/mpg/:mpgId", auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["miles", "gallons", "mpg", "location", "date"];
+    const allowedUpdates = ["miles", "gallons", "mpg", "location", "date", "gasType"];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
 
     if (!isValidOperation) {

@@ -47,7 +47,7 @@ const carSchema = new mongoose.Schema({
             type: Date,
             default: Date.now
         },
-        type: {
+        gasType: {
             type: String,
             required: true
         },
