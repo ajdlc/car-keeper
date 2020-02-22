@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const Car = require("../models/car");
+const stats = require("simple-statistics");
 // Load in the auth
 const auth = require("../middleware/auth");
 
@@ -50,6 +51,50 @@ router.get("/cars/:id", auth, async (req, res) => {
         res.status(500).send(e);
     }
 });
+
+// READ average MPG
+router.get("/cars/:id/avgMpg", auth, async (req, res) => {
+    const _id = req.params.id;
+
+    try {
+        const car = await Car.findOne({_id, owner: req.user._id});
+
+        if(!car) {
+            return res.status(404).send();
+        }
+
+        // Perform the averaging
+        let mpgVals = [];
+        car.mpg.forEach(item => {
+            mpgVals.push(item.mpg);
+        })
+        let avg = stats.mean(mpgVals);
+
+        res.send({avg});
+        
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+// READ Car stats - MPG, most used gas, most used gas station.
+router.get("/cars/:id/stats", auth, async (req, res) => {
+    const _id = req.params.id;
+
+    try {
+        const car = await Car.findOne({_id, owner: req.user._id});
+
+        if(!car) {
+            return res.status(404).send();
+        }
+
+        res.send({ msg: "ROUTE STILL WIP" });
+
+        
+    } catch (e) {
+        res.status(500).send(e);
+    }
+})
 
 // UPDATE Car 
 router.patch("/cars/:id", auth, async (req, res) => {
