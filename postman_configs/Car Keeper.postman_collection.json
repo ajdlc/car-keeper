@@ -74,7 +74,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Pontiac Vibe\",\n\t\"make\": \"Pontiac\",\n\t\"model\": \"Vibe\",\n\t\"year\": 2005,\n\t\"mileage\": 159000\n\t\n}",
+					"raw": "{\n\t\"name\": \"Pontiac Vibe\",\n\t\"make\": \"Pontiac\",\n\t\"model\": \"Vibe\",\n\t\"year\": 2005,\n\t\"mileage\": 159000,\n\t\"vin\": \"123abc\"\n\t\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -209,6 +209,44 @@
 					"path": [
 						"cars",
 						"5e39f998d12c7b2214a66473"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ Car Average MPG",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars/5e4f6959263c4614b5c7525d/avgMpg",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e4f6959263c4614b5c7525d",
+						"avgMpg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ Car Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cars/5e4f6959263c4614b5c7525d/stats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars",
+						"5e4f6959263c4614b5c7525d",
+						"stats"
 					]
 				}
 			},
