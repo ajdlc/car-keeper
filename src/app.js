@@ -7,6 +7,8 @@ const userRouter = require("./routers/user");
 const carRouter = require("./routers/car");
 // Load the MPG Router
 const mpgRouter = require("./routers/mpg");
+// Load in the Location Router
+const locationRouter = require("./routers/location");
 
 const app = express();
 
@@ -33,6 +35,8 @@ app.use(function(req, res, next) {
 app.use(userRouter);
 // Register the car router
 app.use(carRouter);
+// Register the location router
+app.use(locationRouter);
 // Register the MPG router
 app.use(mpgRouter);
 
