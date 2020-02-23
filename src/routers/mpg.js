@@ -23,11 +23,7 @@ router.post("/cars/:id/mpg", auth, async (req, res) => {
     if (!entry.mpg) {
         entry.mpg = (entry.miles / entry.gallons);
         entry.mpg = entry.mpg.toFixed(2);
-    }    
-
-    // Get the gas station information
-    const gasStation = await gasStationLocator.getLocation(entry.location.latitude, entry.location.longitude);
-    entry.gasStation = gasStation;
+    }
     
     // Get the car
     const car = await Car.findOne({_id: req.params.id, owner: req.user._id});
