@@ -1,7 +1,7 @@
 const request = require("request-promise-native");
 
 // About 1600 m is 1 mi, so rounding up gives 2,000
-// Actually switching it to 10
+// Actually switching it to 35 after doing some research
 const radius = 35;
 const type = "gas_station";
 
