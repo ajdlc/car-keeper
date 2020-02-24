@@ -9,7 +9,7 @@ const gasStationLocator = require("../utils/gas_station_locator");
 // CREATE mpg entry
 router.post("/cars/:id/mpg", auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["miles", "gallons", "mpg", "location", "price", "gasType"];
+    const allowedUpdates = ["miles", "gallons", "mpg", "location", "price", "gasType", "gasStation"];
     const isValidOperation = updates.every(update => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
