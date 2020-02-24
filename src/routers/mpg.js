@@ -17,7 +17,8 @@ router.post("/cars/:id/mpg", auth, async (req, res) => {
     }
 
     // Get the mpg
-    const entry = {...req.body};    
+    const entry = {...req.body};
+    
 
     // Determine if the mpg was provided
     if (!entry.mpg) {
