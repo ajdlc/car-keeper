@@ -13,7 +13,7 @@ const { sendWelcomeEmail, cancellationEmail } = require("../emails/account");
 router.post("/users", async (req, res) => {
     const user = new User(req.body);
 
-    try {
+    try { 
       await user.save();
       // Send the welcome email
       sendWelcomeEmail(user.email, user.name);
@@ -29,6 +29,10 @@ router.post("/users", async (req, res) => {
 // Logging in
 router.post("/users/login", async (req, res) => {
     try {
+        const count = await User.countDocuments();
+        if (count > 100) {
+            return res.status(400).send("Sorry, signups are no longer available at this time!");
+        }
         const user = await User.findByCredentials(req.body.email, req.body.password);
         // Return jwt
         const token = await user.generateAuthToken();
