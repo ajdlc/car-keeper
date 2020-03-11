@@ -14,6 +14,7 @@ router.post("/users", async (req, res) => {
     const user = new User(req.body);
 
     try {
+        // Limiting User Signups
         const count = await User.countDocuments();
         if (count > 100) {
             return res.status(400).send("Sorry, signups are no longer available at this time!");
