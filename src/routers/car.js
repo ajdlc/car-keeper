@@ -46,6 +46,19 @@ router.get("/cars/:id", auth, async (req, res) => {
             return res.status(404).send();
         }
 
+        // Sort the mpg Entries by date
+        car.mpg.sort((a,b) => {
+            if (a.date < b.date) {
+                return -1;
+            } else if (a.date > b.date) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        })
+
+        // Send the car back to the user
         res.send(car);
     } catch (e) {
         res.status(500).send(e);
