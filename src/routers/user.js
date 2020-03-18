@@ -70,22 +70,22 @@ router.post("/users/logoutAll", auth, async (req, res) => {
     }
 });
 
-// Forgot Password
-router.post("/forgotpassword", async (req, res) => {
-    const email = req.body.email
-    try {
-        const user = await User.findOne({ email: email });
+// Forgot Password WIP
+// router.post("/forgotpassword", async (req, res) => {
+//     const email = req.body.email
+//     try {
+//         const user = await User.findOne({ email: email });
         
-        // If no user is found
-        if (!user) {
-            return res.status(404);
-        }
+//         // If no user is found
+//         if (!user) {
+//             return res.status(404);
+//         }
 
-        res.send(user);
-    } catch (e) {
-        res.status(400).send(e);
-    }
-})
+//         res.send(user);
+//     } catch (e) {
+//         res.status(400).send(e);
+//     }
+// })
 
 // Create a new instance of Multer
 const upload = multer({
