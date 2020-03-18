@@ -29,6 +29,21 @@ router.get("/cars", auth, async (req, res) => {
             return res.status(404).send();
         }
 
+        // Loop through the cars and sort the mpg entries by date
+        cars.forEach(item => {
+            // Sort the mpg Entries by date
+            item.mpg.sort((a,b) => {
+                if (a.date < b.date) {
+                    return 1;
+                } else if (a.date > b.date) {
+                    return -1;
+                }
+                else {
+                    return 0;
+                }
+            })
+        })
+
         res.send(cars);
     } catch (e) {
         res.status(500).send(e);
